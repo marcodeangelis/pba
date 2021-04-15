@@ -33,7 +33,6 @@ def pba(steps=200) :
 ```python
 import numpy
 import scipy.stats as scipystats
-from numpy import mean, std
 ```
 
 #### Import Frechet
