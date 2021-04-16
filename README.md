@@ -56,7 +56,7 @@ y  = pbox(*[normal(0.15, 0.0021)]*2,steps=steps)
 L3 = pbox(*interval(9.95**3,10.05**3), unbounded=False, interval=True,steps=steps)
 L = pbox(*interval(9.95,10.05), unbounded=False, interval=True,steps=steps)
 I  = pbox(*[normal(5e-4, 2.6e-5)]*2,steps=steps)
-F  = pbox(*[weibull(5.17, 27.5)]*2,steps=steps) 
+F  = pbox(*[weibull(27.5, loc=0, scale=5.7)]*2,steps=steps) 
 E3 = pbox(*[normal(3*200, 3*3.4), normal(3*220, 3*3.4)],steps=steps)
 ```
 
@@ -71,11 +71,11 @@ Iσ =  frechet_div( frechet_times( F, frechet_times(L,y) ), I )
 ```python
 plot(Id,xlabel='displacement')
 ```
-![png](img/output_4_0.png)
+![png](img/output_10_0.png)
 
 ```python
 plot(Id,xlabel='stress')
 ```
 
-![png](img/output_5_0.png)
+![png](img/output_11_0.png)
 
