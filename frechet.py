@@ -71,11 +71,14 @@ def frechet_sum(X,Y):
     N = len(X_lo)
     Z_lo, Z_hi = [], []
     for i in range(N):
-        z_lo = z_hi = []
+        z_lo, z_hi = [], []
         for j in range(i,N):
             z_lo.append(X_lo[j]+Y_lo[i-j+N-1])
-        for j in range(i):
-            z_hi.append(X_hi[j]+Y_lo[i-j])
+        if i == 0:
+            z_hi.append(X_hi[0]+Y_hi[0])
+        else:
+            for j in range(i):
+                z_hi.append(X_hi[j]+Y_hi[i-j])
         Z_lo.append(min(z_lo))
         Z_hi.append(max(z_hi))
 
@@ -90,11 +93,14 @@ def frechet_minus(X,Y):
     N = len(X_lo)
     Z_lo, Z_hi = [], []
     for i in range(N):
-        z_lo = z_hi = []
+        z_lo , z_hi = [], []
         for j in range(i,N):
-            z_lo.append(X_lo[j]-Y_lo[j-i])
-        for j in range(i):
-            z_hi.append(X_hi[j]-Y_lo[j-i+N-1])
+            z_lo.append(X_lo[j]-Y_hi[j-i])
+        if i == 0:
+            z_hi.append(X_hi[0]-Y_lo[N-1])
+        else:
+            for j in range(i):
+                z_hi.append(X_hi[j]-Y_lo[j-i+N-1])
         Z_lo.append(min(z_lo))
         Z_hi.append(max(z_hi))
 
@@ -109,11 +115,14 @@ def frechet_times(X,Y):
     N = len(X_lo)
     Z_lo, Z_hi = [], []
     for i in range(N):
-        z_lo = z_hi = []
+        z_lo , z_hi = [], []
         for j in range(i,N):
             z_lo.append(X_lo[j]*Y_lo[i-j+N-1])
-        for j in range(i):
-            z_hi.append(X_hi[j]*Y_lo[i-j])
+        if i == 0:
+            z_hi.append(X_hi[0]*Y_hi[0])
+        else:
+            for j in range(i):
+                z_hi.append(X_hi[j]*Y_hi[i-j])
         Z_lo.append(min(z_lo))
         Z_hi.append(max(z_hi))
 
@@ -128,11 +137,14 @@ def frechet_div(X,Y):
     N = len(X_lo)
     Z_lo, Z_hi = [], []
     for i in range(N):
-        z_lo = z_hi = []
+        z_lo , z_hi = [], []
         for j in range(i,N):
-            z_lo.append(X_lo[j]/Y_lo[j-i])
-        for j in range(i):
-            z_hi.append(X_hi[j]/Y_lo[j-i+N-1])
+            z_lo.append(X_lo[j]/Y_hi[j-i])
+        if i == 0:
+            z_hi.append(X_hi[0]/Y_lo[N-1])
+        else:
+            for j in range(i):
+                z_hi.append(X_hi[j]/Y_lo[j-i+N-1])
         Z_lo.append(min(z_lo))
         Z_hi.append(max(z_hi))
 
